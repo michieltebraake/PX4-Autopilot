@@ -70,7 +70,7 @@ px4_add_romfs_files(
 	4014_s500
 	4015_holybro_s500
 	4016_holybro_px4vision
-	4017_nxp_hovergames
+	4017_nxp_drone
 	4018_s500_ctrlalloc
 	4030_3dr_solo
 	4031_3dr_quad
