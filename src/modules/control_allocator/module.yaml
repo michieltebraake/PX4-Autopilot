@@ -246,18 +246,20 @@ parameters:
                 short: Control Surface ${i} type
             type: enum
             values:
-                1: Elevator
-                2: Rudder
-                3: Left Elevon
-                4: Right Elevon
-                5: Left V-Tail
-                6: Right V-Tail
-                7: Left Flaps
-                8: Right Flaps
-                9: Left Aileron
-                10: Right Aileron
-                11: Airbrakes
-                12: Custom
+                1: Left Aileron
+                2: Right Aileron
+                3: Elevator
+                4: Rudder
+                5: Left Elevon
+                6: Right Elevon
+                7: Left V-Tail
+                8: Right V-Tail
+                9: Left Elevon (Tailsitter)
+                10: Right Elevon (Tailsitter)
+                11: Left Flap
+                12: Right Flap
+                13: Airbrakes
+                14: Custom
             num_instances: *max_num_servos
             instance_start: 0
             default: 1
@@ -423,23 +425,47 @@ mixer:
       - select_identifier: 'servo-type' # restrict torque based on servo type
         apply_identifiers: ['servo-torque-roll', 'servo-torque-pitch', 'servo-torque-yaw']
         items:
-            # TODO
-            1: # Elevator
+        # Convention: horizontal surfaces: up=positive, vertical: right=positive, mixed: up=positive
+            1: # Left Aileron
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # roll
+              - { 'hidden': True, 'default': 0.0 } # pitch
+              - { 'hidden': True, 'default': 0.0 } # yaw
+            2: # Right Aileron
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # roll
+              - { 'hidden': True, 'default': 0.0 } # pitch
+              - { 'hidden': True, 'default': 0.0 } # yaw
+            3: # Elevator
               - { 'hidden': True, 'default': 0.0 } # roll
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'hidden': True, 'default': 0.0 } # yaw
-            2: # Rudder
+            4: # Rudder
               - { 'hidden': True, 'default': 0.0 } # roll
               - { 'hidden': True, 'default': 0.0 } # pitch
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
-            3: # Left elevon
-              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # roll
-              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # pitch
+            5: # Left Elevon
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'hidden': True, 'default': 0.0 } # yaw
-            4: # Right elevon
+            6: # Right Elevon
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # roll
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'hidden': True, 'default': 0.0 } # yaw
+            7: # Left V Tail
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
+            8: # Right V Tail
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # yaw
+            9: # Left Elevon (Tailsitter)
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
+            10: # Right Elevon (Tailsitter)
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # yaw
 
     config:
         param: CA_AIRFRAME

@@ -45,18 +45,20 @@ public:
 
 	enum class Type : int32_t {
 		// This matches with the parameter
-		Elevator = 1,
-		Rudder = 2,
-		LeftElevon = 3,
-		RightElevon = 4,
-		LeftVTail = 5,
-		RightVTail = 6,
-		LeftFlaps = 7,
-		RightFlaps = 8,
-		LeftAileron = 9,
-		RightAileron = 10,
-		Airbrakes = 11,
-		Custom = 12,
+		LeftAileron = 1,
+		RightAileron = 2,
+		Elevator = 3,
+		Rudder = 4,
+		LeftElevon = 5,
+		RightElevon = 6,
+		LeftVTail = 7,
+		RightVTail = 8,
+		LeftElevonTailsitter = 9,
+		RightElevonTailsitter = 10,
+		LeftFlaps = 11,
+		RightFlaps = 12,
+		Airbrakes = 13,
+		Custom = 14,
 	};
 
 	struct Params {
