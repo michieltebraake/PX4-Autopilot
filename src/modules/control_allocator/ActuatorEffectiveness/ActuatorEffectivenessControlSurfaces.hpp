@@ -53,12 +53,10 @@ public:
 		RightElevon = 6,
 		LeftVTail = 7,
 		RightVTail = 8,
-		LeftElevonTailsitter = 9,
-		RightElevonTailsitter = 10,
-		LeftFlaps = 11,
-		RightFlaps = 12,
-		Airbrakes = 13,
-		Custom = 14,
+		LeftFlaps = 9,
+		RightFlaps = 10,
+		Airbrakes = 11,
+		Custom = 12,
 	};
 
 	struct Params {

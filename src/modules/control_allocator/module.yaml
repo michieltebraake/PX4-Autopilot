@@ -254,12 +254,10 @@ parameters:
                 6: Right Elevon
                 7: Left V-Tail
                 8: Right V-Tail
-                9: Left Elevon (Tailsitter)
-                10: Right Elevon (Tailsitter)
-                11: Left Flap
-                12: Right Flap
-                13: Airbrakes
-                14: Custom
+                9: Left Flap
+                10: Right Flap
+                11: Airbrakes
+                12: Custom
             num_instances: *max_num_servos
             instance_start: 0
             default: 1
@@ -458,11 +456,40 @@ mixer:
               - { 'hidden': True, 'default': 0.0 } # roll
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # yaw
-            9: # Left Elevon (Tailsitter)
+
+      - select_identifier: 'servo-type' # restrict torque based on servo type for tailsitters
+        apply_identifiers: ['servo-torque-roll-tailsitter', 'servo-torque-pitch-tailsitter', 'servo-torque-yaw-tailsitter']
+        items:
+        # Convention: horizontal surfaces: up=positive, vertical: right=positive, mixed: up=positive
+            1: # Left Aileron
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # roll
+              - { 'hidden': True, 'default': 0.0 } # pitch
+              - { 'hidden': True, 'default': 0.0 } # yaw
+            2: # Right Aileron
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # roll
+              - { 'hidden': True, 'default': 0.0 } # pitch
+              - { 'hidden': True, 'default': 0.0 } # yaw
+            3: # Elevator
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'hidden': True, 'default': 0.0 } # yaw
+            4: # Rudder
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'hidden': True, 'default': 0.0 } # pitch
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
+            5: # Left Elevon (Tailsitter --> wing vertical, so affects pitch and yaw)
               - { 'hidden': True, 'default': 0.0 } # roll
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
-            10: # Right Elevon (Tailsitter)
+            6: # Right Elevon (Tailsitter -->wing vertical, so affects pitch and yaw)
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # yaw
+            7: # Left V Tail
+              - { 'hidden': True, 'default': 0.0 } # roll
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
+              - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # yaw
+            8: # Right V Tail
               - { 'hidden': True, 'default': 0.0 } # roll
               - { 'min': 0.0, 'max': 1.0, 'default': 1.0 } # pitch
               - { 'min': -1.0, 'max': 0.0, 'default': -1.0 } # yaw
@@ -633,13 +660,13 @@ mixer:
                             identifier: 'servo-type'
                           - name: 'CA_SV_CS${i}_TRQ_R'
                             label: 'Roll Scale'
-                            identifier: 'servo-torque-roll'
+                            identifier: 'servo-torque-roll-tailsitter'
                           - name: 'CA_SV_CS${i}_TRQ_P'
                             label: 'Pitch Scale'
-                            identifier: 'servo-torque-pitch'
+                            identifier: 'servo-torque-pitch-tailsitter'
                           - name: 'CA_SV_CS${i}_TRQ_Y'
                             label: 'Yaw Scale'
-                            identifier: 'servo-torque-yaw'
+                            identifier: 'servo-torque-yaw-tailsitter'
                           - name: 'CA_SV_CS${i}_TRIM'
                             label: 'Trim'
                     parameters:

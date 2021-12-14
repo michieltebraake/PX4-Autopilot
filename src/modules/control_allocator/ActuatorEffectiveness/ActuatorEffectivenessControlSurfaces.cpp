@@ -109,12 +109,6 @@ void ActuatorEffectivenessControlSurfaces::updateParams()
 		case Type::RightVTail:
 			break;
 
-		case Type::LeftElevonTailsitter:
-			break;
-
-		case Type::RightElevonTailsitter:
-			break;
-
 		case Type::LeftFlaps:
 		case Type::RightFlaps:
 			torque.setZero();

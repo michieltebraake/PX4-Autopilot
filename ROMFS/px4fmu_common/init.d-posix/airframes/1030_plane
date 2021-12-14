@@ -58,8 +58,8 @@ param set-default CA_SV_CS2_TRQ_P 1.0
 param set-default CA_SV_CS2_TYPE 3
 param set-default CA_SV_CS3_TRQ_Y 1.0
 param set-default CA_SV_CS3_TYPE 4
-param set-default CA_SV_CS4_TYPE 11
-param set-default CA_SV_CS5_TYPE 12
+param set-default CA_SV_CS4_TYPE 9
+param set-default CA_SV_CS5_TYPE 10
 param set-default PWM_MAIN_FUNC3 204
 param set-default PWM_MAIN_FUNC4 205
 param set-default PWM_MAIN_FUNC5 101
